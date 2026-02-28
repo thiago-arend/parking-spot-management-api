@@ -1,0 +1,1 @@
+DELETE FROM users; -- em um banco não em memória, como mysql, teria que usar o truncate table para resetar os ids

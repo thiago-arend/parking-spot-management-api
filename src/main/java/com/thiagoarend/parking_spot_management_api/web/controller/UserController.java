@@ -109,6 +109,12 @@ public class UserController {
                             content = @Content(
                                     mediaType = "application/json",
                                     schema = @Schema(implementation = ErrorMessage.class))),
+                    @ApiResponse(
+                            responseCode = "422",
+                            description = "Resource not processed due to invalid input field values",
+                            content = @Content(
+                                    mediaType = "application/json",
+                                    schema = @Schema(implementation = ErrorMessage.class)))
             })
     @PatchMapping("/{id}")
     public ResponseEntity<Void> updatePassword(@PathVariable Long id, @Valid @RequestBody UserPasswordDto dto) {
