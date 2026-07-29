@@ -1,5 +1,6 @@
 package com.thiagoarend.parking_spot_management_api;
 
+import com.thiagoarend.parking_spot_management_api.entity.User.Role;
 import com.thiagoarend.parking_spot_management_api.web.dto.UserCreateDto;
 import com.thiagoarend.parking_spot_management_api.web.dto.UserPasswordDto;
 import com.thiagoarend.parking_spot_management_api.web.dto.UserResponseDto;
@@ -31,7 +32,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@email.com", "123456"))
+                .bodyValue(new UserCreateDto("tod@email.com", "123456", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isCreated()
                 .expectBody(UserResponseDto.class)
@@ -51,7 +52,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("", "123456"))
+                .bodyValue(new UserCreateDto("", "123456", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -67,7 +68,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@email", "123456"))
+                .bodyValue(new UserCreateDto("tod@email", "123456", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -83,7 +84,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@", "123456"))
+                .bodyValue(new UserCreateDto("tod@", "123456", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -102,7 +103,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@email.com", ""))
+                .bodyValue(new UserCreateDto("tod@email.com", "", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -118,7 +119,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@email.com", "12345"))
+                .bodyValue(new UserCreateDto("tod@email.com", "12345", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -134,7 +135,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("tod@email.com", "1234567"))
+                .bodyValue(new UserCreateDto("tod@email.com", "1234567", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.UNPROCESSABLE_ENTITY)
                 .expectBody(ErrorMessage.class)
@@ -153,7 +154,7 @@ public class UserIntegrationTest {
                 .post()
                 .uri("/api/v1/users")
                 .contentType(MediaType.APPLICATION_JSON)
-                .bodyValue(new UserCreateDto("ana@email.com", "123456"))
+                .bodyValue(new UserCreateDto("ana@email.com", "123456", Role.ROLE_CLIENT))
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.CONFLICT)
                 .expectBody(ErrorMessage.class)

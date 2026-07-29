@@ -1,5 +1,6 @@
 package com.thiagoarend.parking_spot_management_api.web.dto;
 
+import com.thiagoarend.parking_spot_management_api.entity.User.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -17,4 +18,5 @@ public class UserCreateDto {
     @NotBlank
     @Size(min = 6, max = 6)
     private String password;
+    private Role role;
 }
